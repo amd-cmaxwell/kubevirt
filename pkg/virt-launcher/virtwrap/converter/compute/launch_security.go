@@ -69,7 +69,7 @@ func Amd64LaunchSecurity(vmi *v1.VirtualMachineInstance) *api.LaunchSecurity {
 		}
 		snpPolicyBits := launchsecurity.SEVSNPPolicyToBits(launchSec.SNP)
 		domain := &api.LaunchSecurity{
-			Type: "sev-snp",
+			Type:         "sev-snp",
 			KernelHashes: kernelHashes,
 		}
 		// Use Default Policy

@@ -627,7 +627,8 @@ spec:
             policy:
               encryptedState: true
             session: sessionValue
-          snp: {}
+          snp:
+            kernelHashes: true
           tdx: {}
         machine:
           type: typeValue

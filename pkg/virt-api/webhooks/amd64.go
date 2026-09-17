@@ -159,7 +159,7 @@ func ValidateLaunchSecurityAmd64(field *k8sfield.Path, spec *v1.VirtualMachineIn
 				})
 			}
 		}
-		
+
 		if launchSecurity.SNP != nil && launchSecurity.SNP.KernelHashes != nil {
 			// Measured direct boot requires the kernel/initrd to be provided directly
 			if spec.Domain.Firmware == nil ||

@@ -25994,6 +25994,15 @@ func schema_kubevirtio_api_core_v1_SEVSNP(ref common.ReferenceCallback) common.O
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kernelHashes": {
+						SchemaProps: spec.SchemaProps{
+							Description: "KernelHashes enables measured direct kernel boot by including hashes of the kernel, initrd and cmline in the launch measurement. Requires spec.domain.firmware.kernelBoot to be configured",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+				},
 			},
 		},
 	}

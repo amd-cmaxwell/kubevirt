@@ -408,7 +408,9 @@
           "session": "sessionValue",
           "dhCert": "dhCertValue"
         },
-        "snp": {},
+        "snp": {
+          "kernelHashes": true
+        },
         "tdx": {}
       },
       "rebootPolicy": "rebootPolicyValue"

@@ -451,7 +451,9 @@ func (SEVPolicy) SwaggerDoc() map[string]string {
 }
 
 func (SEVSNP) SwaggerDoc() map[string]string {
-	return map[string]string{}
+	return map[string]string{
+		"kernelHashes": "KernelHashes enables measured direct kernel boot by including hashes of\nthe kernel, initrd and cmline in the launch measurement. Requires\nspec.domain.firmware.kernelBoot to be configured\n+optional",
+	}
 }
 
 func (SEVAttestation) SwaggerDoc() map[string]string {

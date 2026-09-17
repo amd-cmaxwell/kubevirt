@@ -7645,6 +7645,13 @@ var CRDsValidation map[string]string = map[string]string{
                           type: object
                         snp:
                           description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+                          properties:
+                            kernelHashes:
+                              description: |-
+                                KernelHashes enables measured direct kernel boot by including hashes of
+                                the kernel, initrd and cmline in the launch measurement. Requires
+                                spec.domain.firmware.kernelBoot to be configured
+                              type: boolean
                           type: object
                         tdx:
                           description: Intel Trust Domain Extensions (TDX).
@@ -10357,6 +10364,13 @@ var CRDsValidation map[string]string = map[string]string{
               type: object
             snp:
               description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+              properties:
+                kernelHashes:
+                  description: |-
+                    KernelHashes enables measured direct kernel boot by including hashes of
+                    the kernel, initrd and cmline in the launch measurement. Requires
+                    spec.domain.firmware.kernelBoot to be configured
+                  type: boolean
               type: object
             tdx:
               description: Intel Trust Domain Extensions (TDX).
@@ -11115,6 +11129,13 @@ var CRDsValidation map[string]string = map[string]string{
               type: object
             snp:
               description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+              properties:
+                kernelHashes:
+                  description: |-
+                    KernelHashes enables measured direct kernel boot by including hashes of
+                    the kernel, initrd and cmline in the launch measurement. Requires
+                    spec.domain.firmware.kernelBoot to be configured
+                  type: boolean
               type: object
             tdx:
               description: Intel Trust Domain Extensions (TDX).
@@ -13845,6 +13866,13 @@ var CRDsValidation map[string]string = map[string]string{
                   type: object
                 snp:
                   description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+                  properties:
+                    kernelHashes:
+                      description: |-
+                        KernelHashes enables measured direct kernel boot by including hashes of
+                        the kernel, initrd and cmline in the launch measurement. Requires
+                        spec.domain.firmware.kernelBoot to be configured
+                      type: boolean
                   type: object
                 tdx:
                   description: Intel Trust Domain Extensions (TDX).
@@ -18061,6 +18089,13 @@ var CRDsValidation map[string]string = map[string]string{
                   type: object
                 snp:
                   description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+                  properties:
+                    kernelHashes:
+                      description: |-
+                        KernelHashes enables measured direct kernel boot by including hashes of
+                        the kernel, initrd and cmline in the launch measurement. Requires
+                        spec.domain.firmware.kernelBoot to be configured
+                      type: boolean
                   type: object
                 tdx:
                   description: Intel Trust Domain Extensions (TDX).
@@ -20668,6 +20703,13 @@ var CRDsValidation map[string]string = map[string]string{
                           type: object
                         snp:
                           description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+                          properties:
+                            kernelHashes:
+                              description: |-
+                                KernelHashes enables measured direct kernel boot by including hashes of
+                                the kernel, initrd and cmline in the launch measurement. Requires
+                                spec.domain.firmware.kernelBoot to be configured
+                              type: boolean
                           type: object
                         tdx:
                           description: Intel Trust Domain Extensions (TDX).
@@ -22260,6 +22302,13 @@ var CRDsValidation map[string]string = map[string]string{
               type: object
             snp:
               description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+              properties:
+                kernelHashes:
+                  description: |-
+                    KernelHashes enables measured direct kernel boot by including hashes of
+                    the kernel, initrd and cmline in the launch measurement. Requires
+                    spec.domain.firmware.kernelBoot to be configured
+                  type: boolean
               type: object
             tdx:
               description: Intel Trust Domain Extensions (TDX).
@@ -25863,6 +25912,13 @@ var CRDsValidation map[string]string = map[string]string{
                                 snp:
                                   description: AMD SEV-SNP flags defined by the SEV-SNP
                                     specifications.
+                                  properties:
+                                    kernelHashes:
+                                      description: |-
+                                        KernelHashes enables measured direct kernel boot by including hashes of
+                                        the kernel, initrd and cmline in the launch measurement. Requires
+                                        spec.domain.firmware.kernelBoot to be configured
+                                      type: boolean
                                   type: object
                                 tdx:
                                   description: Intel Trust Domain Extensions (TDX).
@@ -27941,6 +27997,13 @@ var CRDsValidation map[string]string = map[string]string{
               type: object
             snp:
               description: AMD SEV-SNP flags defined by the SEV-SNP specifications.
+              properties:
+                kernelHashes:
+                  description: |-
+                    KernelHashes enables measured direct kernel boot by including hashes of
+                    the kernel, initrd and cmline in the launch measurement. Requires
+                    spec.domain.firmware.kernelBoot to be configured
+                  type: boolean
               type: object
             tdx:
               description: Intel Trust Domain Extensions (TDX).
@@ -31551,6 +31614,13 @@ var CRDsValidation map[string]string = map[string]string{
                                     snp:
                                       description: AMD SEV-SNP flags defined by the
                                         SEV-SNP specifications.
+                                      properties:
+                                        kernelHashes:
+                                          description: |-
+                                            KernelHashes enables measured direct kernel boot by including hashes of
+                                            the kernel, initrd and cmline in the launch measurement. Requires
+                                            spec.domain.firmware.kernelBoot to be configured
+                                          type: boolean
                                       type: object
                                     tdx:
                                       description: Intel Trust Domain Extensions (TDX).
