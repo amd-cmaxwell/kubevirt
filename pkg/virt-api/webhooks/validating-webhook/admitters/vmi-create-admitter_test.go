@@ -2901,6 +2901,41 @@ var _ = Describe("Validating VMICreate Admitter", func() {
 				causes := ValidateVirtualMachineInstanceSpec(k8sfield.NewPath("fake"), &vmi.Spec, config)
 				Expect(causes).To(BeEmpty())
 			})
+
+			It("should reject when KernelHashes is true without kernel boot", func() {
+				vmi.Spec.Domain.LaunchSecurity.SNP.KernelHashes = pointer.P(true)
+				causes := ValidateVirtualMachineInstanceSpec(k8sfield.NewPath("fake"), &vmi.Spec, config)
+				Expect(causes).To(HaveLen(1))
+				Expect(causes[0].Type).To(Equal(metav1.CauseTypeFieldValueInvalid))
+				Expect(causes[0].Message).To(ContainSubstring("KernelHashes requires direct kernel boot"))
+				Expect(causes[0].Field).To(Equal("fake.launchSecurity.snp.kernelHashes"))
+			})
+
+			It("should accept when KernelHashes is true with kernel boot configured", func() {
+				vmi.Spec.Domain.LaunchSecurity.SNP.KernelHashes = pointer.P(true)
+				vmi.Spec.Domain.Firmware = &v1.Firmware{
+					Bootloader: &v1.Bootloader{
+						EFI: &v1.EFI{
+							SecureBoot: pointer.P(false),
+						},
+					},
+					KernelBoot: &v1.KernelBoot{
+						Container: &v1.KernelBootContainer{
+							Image:      "registry.example.com/kernel:latest",
+							KernelPath: "/boot/vmlinuz",
+							InitrdPath: "/boot/initrd",
+						},
+					},
+				}
+				causes := ValidateVirtualMachineInstanceSpec(k8sfield.NewPath("fake"), &vmi.Spec, config)
+				Expect(causes).To(BeEmpty())
+			})
+
+			It("should accept when KernelHashes is unset", func() {
+				vmi.Spec.Domain.LaunchSecurity.SNP.KernelHashes = nil
+				causes := ValidateVirtualMachineInstanceSpec(k8sfield.NewPath("fake"), &vmi.Spec, config)
+				Expect(causes).To(BeEmpty())
+			})
 		})
 	})
 

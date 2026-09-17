@@ -159,6 +159,19 @@ func ValidateLaunchSecurityAmd64(field *k8sfield.Path, spec *v1.VirtualMachineIn
 				})
 			}
 		}
+		
+		if launchSecurity.SNP != nil && launchSecurity.SNP.KernelHashes != nil {
+			// Measured direct boot requires the kernel/initrd to be provided directly
+			if spec.Domain.Firmware == nil ||
+				spec.Domain.Firmware.KernelBoot == nil ||
+				spec.Domain.Firmware.KernelBoot.Container == nil {
+				causes = append(causes, metav1.StatusCause{
+					Type:    metav1.CauseTypeFieldValueInvalid,
+					Message: "KernelHashes requires direct kernel boot configuration (spec.domain.firmware.kernelBoot)",
+					Field:   field.Child("launchSecurity", "snp", "kernelHashes").String(),
+				})
+			}
+		}
 
 		for _, iface := range spec.Domain.Devices.Interfaces {
 			if iface.BootOrder != nil {

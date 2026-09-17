@@ -1256,6 +1256,7 @@ type LaunchSecurity struct {
 	ReducedPhysBits        string `xml:"reducedPhysBits,omitempty"`
 	Policy                 string `xml:"policy,omitempty"`
 	QuoteGenerationService *QGS   `xml:"quoteGenerationService,omitempty"`
+	KernelHashes    	   string `xml:"kernelHashes,attr,omitempty"`
 }
 
 type QGS struct {

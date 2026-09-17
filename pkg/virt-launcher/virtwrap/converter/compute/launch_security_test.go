@@ -62,6 +62,7 @@ var _ = Describe("LaunchSecurity Domain Configurator", func() {
 					Cbitpos:         "",
 					ReducedPhysBits: "",
 					Policy:          "0x5",
+					KernelHashes:    "",
 				},
 			},
 		}

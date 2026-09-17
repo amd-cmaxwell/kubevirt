@@ -46,7 +46,7 @@ func (l LaunchSecurityDomainConfigurator) Configure(vmi *v1.VirtualMachineInstan
 
 	switch l.architecture {
 	case "amd64":
-		domain.Spec.LaunchSecurity = amd64LaunchSecurity(vmi)
+		domain.Spec.LaunchSecurity = Amd64LaunchSecurity(vmi)
 	case "arm64":
 		domain.Spec.LaunchSecurity = nil
 	case "s390x":
@@ -59,12 +59,18 @@ func (l LaunchSecurityDomainConfigurator) Configure(vmi *v1.VirtualMachineInstan
 	return nil
 }
 
-func amd64LaunchSecurity(vmi *v1.VirtualMachineInstance) *api.LaunchSecurity {
+func Amd64LaunchSecurity(vmi *v1.VirtualMachineInstance) *api.LaunchSecurity {
 	launchSec := vmi.Spec.Domain.LaunchSecurity
 	if launchSec.SEV == nil && launchSec.SNP != nil {
+		// libvirt's takes KernelHashes as "yes"/"no"
+		kernelHashes := "no"
+		if launchSec.SNP.KernelHashes != nil && *launchSec.SNP.KernelHashes {
+			kernelHashes = "yes"
+		}
 		snpPolicyBits := launchsecurity.SEVSNPPolicyToBits(launchSec.SNP)
 		domain := &api.LaunchSecurity{
 			Type: "sev-snp",
+			KernelHashes: kernelHashes,
 		}
 		// Use Default Policy
 		domain.Policy = "0x" + strconv.FormatUint(uint64(snpPolicyBits), 16)

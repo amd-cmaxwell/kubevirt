@@ -885,6 +885,11 @@ type SEVPolicy struct {
 }
 
 type SEVSNP struct {
+	// KernelHashes enables measured direct kernel boot by including hashes of
+	// the kernel, initrd and cmline in the launch measurement. Requires
+	// spec.domain.firmware.kernelBoot to be configured
+	// +optional
+	KernelHashes *bool `json:"kernelHashes,omitempty"`
 }
 
 type SEVAttestation struct {
